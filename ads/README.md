@@ -17,6 +17,8 @@ Meta (Facebook and Instagram) ad creative for ELUORA, written in English. Every 
 | 07 | [The gift: The Full Ritual with the Eluora bag](07-the-gift.md) | THE ELUORA RITUAL (The Full Ritual) | Gift buyers (seasonal) and existing fans |
 | 08 | [Review ad template (REAL customer review placeholder)](08-review-template.md) | Any product or ritual the real review is about | Warm / retargeting (engaged with earlier ads or visited eluora |
 
+**Campaign plan (Step 3):** [campaign-plan.md](campaign-plan.md): one Sales campaign, one broad ad set per country (EE, FI), wave 1 = concepts 02, 03, 04, 07.
+
 Each file has 3 variations (hook, headline, primary text, CTA button) and a visual brief for 1:1 and 9:16.
 
 ## How to read the copy
