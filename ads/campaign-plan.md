@@ -97,7 +97,7 @@ A €20/day ad set can fairly test about **4 ads**. The rule is that each ad nee
 - [ ] Instagram @eluora.official connected to the ad account
 - [x] Each ad links to the page of the product it advertises (owner confirmed). Add UTMs: `utm_source=meta&utm_medium=paid_social&utm_campaign=test1&utm_content=02-mask`
 - [ ] Pages load fast on a phone inside Instagram's in-app browser (swipe up from an ad preview to check)
-- [ ] Finland is switched on as a shipping country in the store (the country list sent on 18 Nov showed only Estonia ticked)
+- [x] Ships to Estonia, Finland and the other EU countries in the store list (owner, 2026-11-18)
 - [ ] "Free shipping over €80" and "Order by 19 December for Christmas delivery" visible on product pages and at checkout
 - [ ] Footage and stills reviewed for legible banned words on packaging (see `README.md`)
 

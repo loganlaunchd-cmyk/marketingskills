@@ -55,7 +55,7 @@ The catalogue itself contains words and claims we must not reuse in ads. Use the
 
 **Channels:** Website www.eluora.co · Instagram @eluora.official
 
-**Business model and pricing:** Direct-to-consumer on eluora.co, prices in EUR (owner-supplied price list, 2026-11-16). Shipping about €5 to most EU countries; **free shipping on orders over €80** (so all three main rituals ship free, single products do not). The store's country list covers the EU (Austria to Sweden); Estonia is the ticked/home market. **Last order date for Christmas delivery: 19 December.**
+**Business model and pricing:** Direct-to-consumer on eluora.co, prices in EUR (owner-supplied price list, 2026-11-16). Shipping about €5 to most EU countries; **free shipping on orders over €80** (so all three main rituals ship free, single products do not). Ships to: Austria, Belgium, Bulgaria, Croatia, Denmark, Estonia, Finland, France, Germany, Greece, Ireland, Italy, Latvia, Lithuania, Luxembourg, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden (owner, 2026-11-18). **Last order date for Christmas delivery: 19 December.**
 
 ### Price list (owner-supplied)
 
