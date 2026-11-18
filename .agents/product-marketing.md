@@ -228,7 +228,7 @@ Based only on the catalogue:
 ## Paid Ads
 
 **Target CPA / ROAS:** **[TO CONFIRM]** (needs prices and margin)
-**Test budget:** €20-40/day (owner, 2026-11-18). Plan uses €40/day.
+**Test budget:** €20-25/day (owner, 2026-11-18). Plan uses €24/day (€12 per country). Pixel tested and working.
 **Countries:** Estonia, Finland first; later EU markets from the store's shipping list. Each ad links to the page of the product it advertises.
 **Ad language:** English (owner decision, 2026-11-16).
 **Conversions that count:** Purchase **[TO CONFIRM]**
