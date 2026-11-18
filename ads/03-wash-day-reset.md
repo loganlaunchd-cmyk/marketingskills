@@ -4,7 +4,7 @@
 **Product(s):** The Reset (Nordic Scalp Reset), Deep Cleansing Peat Shampoo, 250 ml, €42; supported by The Restore and The Daily  
 **Grounding:** Catalogue p.4 (The Reset), p.6 (The Restore), p.11 (scalp ritual)  
 **Audience stage:** Problem-aware. Speaks to the feeling of heavy roots and build-up (cosmetic only).  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** The Reset (Nordic Scalp Reset) product page
 
 **Test hypothesis:** Variation 1 (question hook) beats variation 2 (statement hook) on link CTR in women 25-45, because naming the 'heavy roots' feeling makes the ad self-select.
 

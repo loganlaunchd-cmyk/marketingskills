@@ -1,7 +1,7 @@
 # Product Marketing Context — ELUORA
 
-**Document version:** v2 (draft, awaiting owner review)
-**Last updated:** 2026-11-16
+**Document version:** v3
+**Last updated:** 2026-11-18
 **Source of truth:** *ELUORA Retail Product Catalogue* (PDF, 14 pages). Page references below use the PDF page number. Anything not in the catalogue is marked **[TO CONFIRM]** and must not appear in copy until the owner supplies it.
 
 ---
@@ -55,7 +55,7 @@ The catalogue itself contains words and claims we must not reuse in ads. Use the
 
 **Channels:** Website www.eluora.co · Instagram @eluora.official
 
-**Business model and pricing:** Direct-to-consumer on eluora.co, prices in EUR (owner-supplied price list, 2026-11-16). Shipping countries and free-shipping threshold **[TO CONFIRM]**.
+**Business model and pricing:** Direct-to-consumer on eluora.co, prices in EUR (owner-supplied price list, 2026-11-16). Shipping about €5 to most EU countries; **free shipping on orders over €80** (so all three main rituals ship free, single products do not). The store's country list covers the EU (Austria to Sweden); Estonia is the ticked/home market. **Last order date for Christmas delivery: 19 December.**
 
 ### Price list (owner-supplied)
 
@@ -221,15 +221,15 @@ Based only on the catalogue:
 ## Goals
 
 **Business goal:** **[TO CONFIRM]** (e.g. first online sales in EE/FI).
-**Conversion action:** Purchase on eluora.co **[TO CONFIRM]** — and whether Meta Pixel + Conversions API are installed.
+**Conversion action:** Purchase on eluora.co. Owner reports Meta is set up (2026-11-18); confirm with one test order before launch.
 **Best sellers / hero product:** **[TO CONFIRM]**
 **Current metrics:** **[TO CONFIRM]**
 
 ## Paid Ads
 
 **Target CPA / ROAS:** **[TO CONFIRM]** (needs prices and margin)
-**Monthly test budget:** **[TO CONFIRM]**
-**Countries:** Estonia, Finland first; **[TO CONFIRM]** next EU markets.
+**Test budget:** €20-40/day (owner, 2026-11-18). Plan uses €40/day.
+**Countries:** Estonia, Finland first; later EU markets from the store's shipping list. Each ad links to the page of the product it advertises.
 **Ad language:** English (owner decision, 2026-11-16).
 **Conversions that count:** Purchase **[TO CONFIRM]**
 **Agent may:** read, compare, flag, draft, recommend
@@ -245,5 +245,6 @@ Based only on the catalogue:
 
 ## Changelog
 
+- v3 (2026-11-18) — Added shipping (€5, free over €80), Christmas cut-off (19 Dec), Meta set up, €20-40/day budget, product-page landing rule.
 - v2 (2026-11-16) — Confirmed product-name mapping; The Reset (Nordic Scalp Reset) corrected to €42. Ads use catalogue + website names together; scalp bundle renamed The Scalp Reset Ritual for ads; Full Ritual confirmed with black case. Added owner price list (EUR) with inferred name mapping to catalogue products; two new rituals (Daily Hair, Daily Skin) pending contents; ad language set to English.
 - v1 (2026-11-16) — Initial context drafted from the ELUORA Retail Product Catalogue and owner brief; open items marked [TO CONFIRM].

@@ -23,8 +23,23 @@ Budget: set per ad set (so each country gets a fair read)
       └── the same 4 ads
 ```
 
-**Total:** €40/day, run for 21 days ≈ **€840** (recommended).
+**Total:** €40/day (top of your €20-40 range). See the timeline in section 1a: about **€1,200 maximum** from launch to 19 December, and never more than €40 on any day.
 **Lean option:** €10/day per country (€20/day, ≈ €420 for 21 days). At that budget only **2 ads per country** get enough spend to judge, so launch just 04 (Nordic Skin Ritual) and 07 (the gift) and wait the full 21 days before deciding.
+
+
+## 1a. Timeline to Christmas
+
+| Dates | Budget | What happens |
+|---|---|---|
+| **Launch as soon as the test order works** (aim for 20 Nov) to 3 Dec | €40/day (€20 per country) | Wave 1: ads 02, 03, 04 and 07 in both countries. Hands off for the first 3 days. |
+| 4 Dec (day 14) | | First decisions (section 7): cut weak ads, swap in wave 2. |
+| 4 to 19 Dec | Up to €40/day total | Shift money toward the stronger country and the winning ads. Add the line "Order by 19 December for delivery before Christmas" to ad 07 as a new ad. Do not go above €40/day; at this budget there is no step up to make. |
+| **20 Dec** | Drop to €20/day | Pause ad 07 and remove any Christmas lines. Keep running the winners; add 06 (The Cleanse) and 01 (Bog to bottle). |
+| January | Review | Costs fall after the holidays. Re-test with what was learned. |
+
+**If you prefer €20/day:** run €10 per country with only ads 04 and 07 until 19 December, then switch to 02 and 03.
+
+**Free shipping over €80 helps:** both rituals (€108, €198) ship free, single products do not. Expect the ritual ads to have a higher order value; judge them on return on ad spend, not only on cost per purchase.
 
 ## 2. Campaign settings
 
@@ -60,7 +75,7 @@ A €20/day ad set can fairly test about **4 ads**. The rule is that each ad nee
 | **02 · The black mask moment** | The most visual scroll-stopper. It tests whether the peat texture earns attention in a beauty feed. |
 | **03 · Wash day reset** | The clearest everyday problem (heavy roots and build-up) with the hero hair product at €42. It tests the scalp and hair side of the brand. |
 | **04 · The Nordic Skin Ritual** | A full routine at €108. It tests whether people buy the bundle straight from cold traffic. |
-| **07 · The gift** | It is mid-November: gift buying peaks now, and €198 is the highest order value. The owner must confirm the last order date for delivery before Christmas. |
+| **07 · The gift** | Gift buying peaks now, €198 is the highest order value, and it ships free (over €80). Runs until the **19 December** order cut-off, then is paused. |
 
 | Wave 2 (swap in as ads are cut, from week 2) | Use |
 |---|---|
@@ -76,13 +91,14 @@ A €20/day ad set can fairly test about **4 ads**. The rule is that each ad nee
 
 ## 5. Before launch: checklist (must pass, or the test cannot be read)
 
-- [ ] Meta Pixel **and** Conversions API send **Purchase** with `value` and `currency: EUR` (test with a real order, then refund it)
+- [x] Meta set up (owner, 2026-11-18). Still do **one real test order** and check Events Manager shows Purchase with `value` and `currency: EUR`, then refund it
 - [ ] AddToCart, InitiateCheckout and ViewContent events firing
 - [ ] eluora.co domain verified in Meta Business Manager
 - [ ] Instagram @eluora.official connected to the ad account
-- [ ] Every ad links to the matching product or ritual page (not the homepage), with UTMs: `utm_source=meta&utm_medium=paid_social&utm_campaign=test1&utm_content=02-mask`
+- [x] Each ad links to the page of the product it advertises (owner confirmed). Add UTMs: `utm_source=meta&utm_medium=paid_social&utm_campaign=test1&utm_content=02-mask`
 - [ ] Pages load fast on a phone inside Instagram's in-app browser (swipe up from an ad preview to check)
-- [ ] Shipping to Estonia and Finland, delivery times and the Christmas cut-off date shown on the site
+- [ ] Finland is switched on as a shipping country in the store (the country list sent on 18 Nov showed only Estonia ticked)
+- [ ] "Free shipping over €80" and "Order by 19 December for Christmas delivery" visible on product pages and at checkout
 - [ ] Footage and stills reviewed for legible banned words on packaging (see `README.md`)
 
 ## 6. The numbers to watch
@@ -145,15 +161,12 @@ Never edit a running ad: editing restarts Meta's learning. Pause it and launch a
 **Facts (from the catalogue, the price list and the owner):** product range and prices, EE and FI first, women 25-45, English ads, no reviews yet, the gift bundle includes the black case.
 
 **Assumptions (replace when known):**
-- €40/day test budget and 21-day test (≈ €840)
+- €40/day budget within the owner's €20-40 range
 - €40 target cost per purchase (40% margin on a €100 average order)
 - Purchase tracking will be working before launch
 
 **MISSING (needed to judge results properly):**
 - Gross margin per product and average order value → real break-even cost per purchase
-- Pixel and Conversions API status on eluora.co
-- Last order date for delivery before Christmas in EE and FI
-- Landing page URLs per concept
 - Any past sales or ad data (best seller)
 
 **Approval needed before any spend:** I will not create the campaign, upload ads, or use image or video tools. When you are ready, confirm the budget and I can turn this into a step-by-step Ads Manager setup sheet.

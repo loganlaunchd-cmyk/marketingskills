@@ -4,7 +4,7 @@
 **Product(s):** Range-wide; variations lead with the range, The Restore (Silk Repair, €34) and The Daily (Daily Restore, €32)  
 **Grounding:** Catalogue p.4 (peat, argan; label: argan & olive oil), p.5 (peat water, aloe vera), p.6 (argan, olive oil, peat water), p.7-9 (peat, peat water)  
 **Audience stage:** Solution-aware, ingredient-curious buyers.  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** page of the product named in each variation (range page for variation 1)
 
 **Test hypothesis:** Ingredient framing gets a higher link CTR than concept 01 among people who engaged with earlier ads (warm), and a lower CTR among cold audiences. Read it by audience before judging.
 

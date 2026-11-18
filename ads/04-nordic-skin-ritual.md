@@ -4,7 +4,7 @@
 **Product(s):** The Nordic Skin Ritual, €108: The Cleanse (Bog Bar), The Purify (Black Earth Renewal), The Balance (Refining Mineral Toner)  
 **Grounding:** Catalogue p.7-9 (three face products), p.12 (Nordic Skin Ritual)  
 **Audience stage:** Solution-aware. A bundle offer with a clear routine.  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** Nordic Skin Ritual product page
 
 **Test hypothesis:** Beats single-product face concepts (02, 06) on purchase conversion rate and average order value, because the bundle answers 'what do I use with it?' in one step.
 
@@ -63,6 +63,10 @@ The Cleanse washes without stripping the skin's moisture barrier. The Purify ref
 ```
 
 **Call to action button:** Learn More
+
+## Optional closing line (factual)
+
+- `Free shipping on orders over €80.` (the ritual is €108, so it qualifies)
 
 ## Visual brief
 

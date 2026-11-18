@@ -4,7 +4,7 @@
 **Product(s):** The Purify (Black Earth Renewal), Deep Cleansing Peat Facial Mask, 250 ml, €54  
 **Grounding:** Catalogue p.8 (The Purify), p.12 (Nordic Skin Ritual, weekly step)  
 **Audience stage:** Solution-aware. Texture and ritual are the scroll-stopper.  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** The Purify (Black Earth Renewal) product page
 
 **Test hypothesis:** The texture close-up (variation 2) beats concept 01 on thumb-stop rate (3-second views / impressions) in the same ad set, because the dark peat texture is visually unusual in a beauty feed.
 

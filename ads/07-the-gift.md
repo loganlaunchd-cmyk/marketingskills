@@ -4,7 +4,7 @@
 **Product(s):** THE ELUORA RITUAL (The Full Ritual), €198: all six products in the black ELUORA case  
 **Grounding:** Catalogue p.13 (The Full Ritual and black case), p.3 (collection), p.14 (where beauty products come from); owner confirmed the case is included  
 **Audience stage:** Gift buyers (seasonal) and existing fans. Highest order value.  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** THE ELUORA RITUAL product page
 
 **Test hypothesis:** Purchase conversion rate and ROAS rise in the weeks before Christmas relative to the non-gift concepts, with a higher average order value than any other concept.
 
@@ -63,6 +63,13 @@ Inside are The Reset, The Daily, The Restore, The Cleanse, The Purify and The Ba
 ```
 
 **Call to action button:** Shop Now
+
+## Optional closing lines (factual, add to the end of any primary text)
+
+- `Order by 19 December for delivery before Christmas.` (remove on 20 December)
+- `Free shipping on orders over €80.`
+
+Keep the tone calm: one line, no countdowns, no exclamation marks.
 
 ## Visual brief
 

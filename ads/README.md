@@ -62,8 +62,13 @@ Each file has 3 variations (hook, headline, primary text, CTA button) and a visu
 - **Look:** cream, warm beige, travertine stone, linen, moss, olive leaves, soft low sun, gold ELUORA logo (as in the catalogue photography).
 - **No image or video tools have been used.** If you want me to generate visuals with a tool (for example Higgsfield), I will first send you the plan and the credit or € cost for approval.
 
+## Shop facts (owner, 2026-11-18)
+
+- Shipping about €5 to most EU countries, **free over €80** (rituals qualify; single products do not).
+- **Last order date for Christmas delivery: 19 December.**
+
 ## Open items before launch
 
-- [ ] Landing page URL for each concept
+- [x] Landing page: each ad links to the page of the product it advertises (owner, 2026-11-18)
 - [ ] One or more real customer reviews, with permission, for concept 08
 - [ ] Owner review of footage for label visibility

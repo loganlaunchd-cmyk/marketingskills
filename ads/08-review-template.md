@@ -4,7 +4,7 @@
 **Product(s):** Any product or ritual the real review is about  
 **Grounding:** Must be grounded in a real customer review the owner supplies, used with that customer's written permission  
 **Audience stage:** Warm / retargeting (engaged with earlier ads or visited eluora.co).  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** product page of the product the real review is about
 
 **Test hypothesis:** Once a real review is in place, beats concept 01 on purchase conversion rate in the warm audience. Do not run it until a real review exists.
 

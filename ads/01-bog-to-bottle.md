@@ -4,7 +4,7 @@
 **Product(s):** Whole range (six products, three at-home rituals)  
 **Grounding:** Catalogue p.1 (Estonian bog cover), p.2 (About ELUORA, elu = life), p.3 (Retail Collection), p.9 (peat water from Estonia's peat bogs), p.14 (where beauty products come from)  
 **Audience stage:** Unaware / problem-aware cold audience. Brand introduction.  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** eluora.co homepage or collection page (brand story, no single product)
 
 **Test hypothesis:** As the cold-audience opener, beats the product-led concepts (03, 06) on 3-second video view rate and CTR in EE and FI, because origin is the most distinctive thing about ELUORA.
 

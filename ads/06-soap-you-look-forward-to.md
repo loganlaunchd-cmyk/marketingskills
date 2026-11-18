@@ -4,7 +4,7 @@
 **Product(s):** The Cleanse (Bog Bar), Peat Soap with Lemongrass, Rosemary & Peppermint, €28  
 **Grounding:** Catalogue p.7 (The Cleanse, 'a cleansing ritual worth looking forward to')  
 **Audience stage:** Problem-aware to solution-aware. Lowest price point, easy first purchase.  
-**Landing page:** eluora.co [TO CONFIRM exact product or ritual URL]
+**Landing page:** The Cleanse (Bog Bar) product page
 
 **Test hypothesis:** As the lowest-priced entry product, gets the lowest cost per purchase of the single-product concepts, with a lower average order value than concept 04.
 
