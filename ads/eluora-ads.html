@@ -1,0 +1,794 @@
+<title>ELUORA Meta Ads</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap">
+<style>
+/* Layout: a single readable column, plan first, then one card per ad concept; ELUORA's own catalogue palette (stone, peat, gold) */
+:root {
+  --bg: #f6f3ee; --surface: #fffdf9; --ink: #2b2620; --muted: #6f665b; --line: #e3dbcf;
+  --gold: #a07b3c; --peat: #2e2a25; --live: #2f6b4f; --live-bg: #e3efe7; --next: #8a5a12; --next-bg: #f6ead2;
+  --later: #5c5a73; --later-bg: #e8e7f0; --hold: #8c3b32; --hold-bg: #f5e2df;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1b1916; --surface: #24211d; --ink: #ece5da; --muted: #a89e90; --line: #3a352e;
+  --gold: #d0a95f; --peat: #ece5da; --live: #8fd0ad; --live-bg: #1f3329; --next: #e6b766; --next-bg: #3a2e18;
+  --later: #b9b6d6; --later-bg: #2c2b38; --hold: #e79a8f; --hold-bg: #3b2421; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #1b1916; --surface: #24211d; --ink: #ece5da; --muted: #a89e90; --line: #3a352e;
+  --gold: #d0a95f; --peat: #ece5da; --live: #8fd0ad; --live-bg: #1f3329; --next: #e6b766; --next-bg: #3a2e18;
+  --later: #b9b6d6; --later-bg: #2c2b38; --hold: #e79a8f; --hold-bg: #3b2421; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+.wrap { max-width: 860px; margin: 0 auto; display: grid; gap: 40px; }
+header { padding-top: 40px; display: grid; gap: 10px; }
+.brand { font-family: var(--display); font-size: 15px; letter-spacing: .32em; color: var(--gold); text-transform: uppercase; }
+h1 { font-family: var(--display); font-weight: 500; font-size: clamp(34px, 7vw, 52px); line-height: 1.05; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); max-width: 62ch; margin: 0; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 30px; margin: 0 0 4px; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 24px; line-height: 1.2; margin: 0; text-wrap: balance; }
+h4 { margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.section-intro { color: var(--muted); margin: 0 0 16px; max-width: 62ch; }
+.label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; }
+.status { display: flex; flex-wrap: wrap; gap: 8px; }
+.status span { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+.status b { color: var(--live); font-weight: 600; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.summary div { background: var(--surface); padding: 14px 16px; display: grid; gap: 2px; }
+.summary strong { font-family: var(--display); font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.summary span { color: var(--muted); font-size: 13px; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-left: 2px solid var(--line); margin-left: 6px; }
+.timeline li { position: relative; padding: 0 0 18px 22px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--gold); }
+.timeline li.key::before { background: var(--gold); }
+.timeline .date { font-weight: 600; font-variant-numeric: tabular-nums; }
+.timeline p { margin: 2px 0 0; color: var(--muted); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+.settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.setting { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; min-width: 0; }
+.setting p { margin: 0; color: var(--muted); font-size: 13px; }
+.nav { display: grid; gap: 6px; }
+.nav-item { display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; color: inherit; text-decoration: none; }
+.nav-item:hover, .nav-item:focus-visible { border-color: var(--gold); outline: none; }
+.nav-num { font-family: var(--display); font-size: 20px; color: var(--gold); font-variant-numeric: tabular-nums; }
+.nav-title { min-width: 0; }
+.pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; letter-spacing: .02em; }
+.pill.live { color: var(--live); background: var(--live-bg); }
+.pill.next { color: var(--next); background: var(--next-bg); }
+.pill.later { color: var(--later); background: var(--later-bg); }
+.pill.hold { color: var(--hold); background: var(--hold-bg); }
+.concept { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 18px; scroll-margin-top: 16px; min-width: 0; }
+.concept-head { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+.big-num { font-family: var(--display); font-size: 44px; line-height: .9; color: var(--gold); font-variant-numeric: tabular-nums; }
+.meta { margin: 6px 0 0; color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.facts { margin: 0; display: grid; gap: 8px; font-size: 13px; }
+.facts div { display: grid; grid-template-columns: 170px 1fr; gap: 12px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; min-width: 0; }
+.variations { display: grid; gap: 14px; }
+.variation { border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 10px; }
+.cta { font-size: 12px; text-transform: none; letter-spacing: 0; color: var(--muted); font-weight: 500; }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field-head { display: flex; align-items: center; gap: 10px; }
+.count { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
+.copy { font: 600 11px var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.copy:hover, .copy:focus-visible { border-color: var(--gold); outline: none; }
+.copy.done { color: var(--live); border-color: var(--live); }
+.text { white-space: pre-wrap; background: var(--bg); border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
+.extra { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 14px; }
+details.brief { border-top: 1px solid var(--line); padding-top: 12px; }
+summary { cursor: pointer; font-weight: 600; color: var(--gold); }
+summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.brief-body { padding-top: 8px; font-size: 14px; }
+.brief-body p { margin: 8px 0; }
+.brief-body ul { margin: 4px 0; padding-left: 20px; }
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.rules ul { margin: 0; padding-left: 18px; }
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.checklist li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; }
+.tick { color: var(--live); font-weight: 700; }
+.open { color: var(--next); font-weight: 700; }
+footer { color: var(--muted); font-size: 13px; }
+@media (max-width: 560px) {
+  .facts div { grid-template-columns: 1fr; gap: 0; }
+  .concept { padding: 16px; }
+  .nav-item { grid-template-columns: 28px 1fr; }
+  .nav-item .pill { grid-column: 2; justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="brand">Eluora</div>
+  <h1>Meta ads for Estonia and Finland</h1>
+  <p class="lede">Everything for the first Meta campaign in one place: the plan, the budget, and all 8 ad ideas with text ready to copy into Ads Manager. Every claim comes from the ELUORA catalogue and your price list. Nothing has been launched or spent yet.</p>
+  <div class="status"><span><b>✓</b> Meta tracking tested</span><span><b>✓</b> Ships to 23 EU countries</span><span><b>✓</b> Each ad links to its product page</span><span><b>✓</b> Ads in English</span></div>
+</header>
+
+<section>
+  <h2>The plan at a glance</h2>
+  <p class="section-intro">One sales campaign with one ad set for Estonia and one for Finland. Two ads in each until the Christmas cut-off.</p>
+  <div class="summary">
+    <div><strong>€24</strong><span>per day in total</span></div>
+    <div><strong>€12 + €12</strong><span>Estonia + Finland</span></div>
+    <div><strong>€720</strong><span>most you'd spend up to 19 Dec</span></div>
+    <div><strong>2 ads</strong><span>per country at a time</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Timeline</h2>
+  <p class="section-intro">The dates assume a 20 November launch. Move them with the launch day.</p>
+  <ol class="timeline">
+    <li class="key"><span class="date">20 Nov · Launch</span><p>Start ads 04 (Nordic Skin Ritual) and 07 (the gift) in both countries. Change nothing for 3 days.</p></li>
+    <li><span class="date">27 Nov · First check</span><p>Pause any ad that has spent under €21. Replace it with ad 02.</p></li>
+    <li><span class="date">4 Dec · First decisions</span><p>Pause any ad with €80 spent and no add-to-carts. Add "Order by 19 December" to the gift ad as a new ad.</p></li>
+    <li><span class="date">4–19 Dec · Lean into what works</span><p>Move money to the country that sells more cheaply, for example €15 and €9. Keep the total at €24–25.</p></li>
+    <li><span class="date">11 Dec</span><p>Pause any ad with €120 spent and no sales.</p></li>
+    <li class="key"><span class="date">20 Dec · Christmas cut-off passed</span><p>Pause the gift ad. Start ads 02 (The Purify) and 03 (The Reset) next to ad 04.</p></li>
+    <li><span class="date">January · Review</span><p>Ad costs drop after the holidays. Plan round two from what sold.</p></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Settings in Ads Manager</h2>
+  <p class="section-intro">The same settings for both countries. Only the location and name change.</p>
+  <div class="settings">
+    <div class="setting"><span class="label">Campaign goal</span><strong>Sales, optimised for Purchase</strong><p>Meta looks for buyers, not just clickers.</p></div>
+    <div class="setting"><span class="label">Budget</span><strong>Set on each ad set, €12/day</strong><p>Turn off Advantage campaign budget so one country can't take all the money.</p></div>
+    <div class="setting"><span class="label">Audience</span><strong>Broad, Advantage+ audience on</strong><p>Suggest women 25–45, minimum age 25, no interests. The ads do the targeting.</p></div>
+    <div class="setting"><span class="label">Placements</span><strong>Advantage+ placements</strong><p>Feed, Stories and Reels. Upload the 1:1 and 9:16 versions in the same ad.</p></div>
+    <div class="setting"><span class="label">Exclude</span><strong>People who bought in the last 180 days</strong><p>No point paying to reach existing customers.</p></div>
+    <div class="setting"><span class="label">Text options</span><strong>Add all 3 versions to one ad</strong><p>Meta tests the hooks for you without splitting the small budget.</p></div>
+  </div>
+  <p class="section-intro" style="margin-top:12px">Campaign name: META_Sales_EE-FI_Broad_Test1_2026-11 · Ad set names: EE_Broad_W25-45 and FI_Broad_W25-45</p>
+</section>
+
+<section>
+  <h2>Numbers to watch</h2>
+  <p class="section-intro">The €40 target cost per sale is a guess based on a €100 order and a 40% margin. Send your real margin and these numbers will change.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Number</th><th>What it tells you</th><th>Aim for</th></tr></thead>
+    <tbody>
+      <tr><td>Hook rate (3-second views ÷ impressions)</td><td>Whether the first seconds stop the scroll (video only)</td><td class="num">25% or more</td></tr>
+      <tr><td>Link click-through rate</td><td>Whether the ad makes people want to see more</td><td class="num">1% or more</td></tr>
+      <tr><td>Landing page views ÷ clicks</td><td>Under 70% usually means a slow page</td><td class="num">70% or more</td></tr>
+      <tr><td>Add to carts</td><td>Clicks with no add-to-carts mean the page doesn't match the ad</td><td class="num">Rising</td></tr>
+      <tr><td>Cost per purchase</td><td>What each sale costs in ads</td><td class="num">€40 or less</td></tr>
+      <tr><td>Return on ad spend</td><td>Sales value for each €1 spent</td><td class="num">€2.50 or more</td></tr>
+      <tr><td>Frequency</td><td>How often the same person sees the ad</td><td class="num">Under 2.5</td></tr>
+      <tr><td>Estonia vs Finland</td><td>Where to move money from 4 Dec</td><td class="num">Compare</td></tr>
+    </tbody>
+  </table></div>
+  <p class="section-intro" style="margin-top:12px">Never edit a running ad, because Meta restarts its learning. Pause it and add a new one instead.</p>
+</section>
+
+<section>
+  <h2>The 8 ad ideas</h2>
+  <p class="section-intro">Tap one to jump to it. Each has 3 versions and a visual brief for photos or video.</p>
+  <nav class="nav"><a href="#c-01" class="nav-item"><span class="nav-num">01</span><span class="nav-title">Bog to bottle</span><span class="pill later">January</span></a><a href="#c-02" class="nav-item"><span class="nav-num">02</span><span class="nav-title">The black mask moment</span><span class="pill next">From 20 Dec</span></a><a href="#c-03" class="nav-item"><span class="nav-num">03</span><span class="nav-title">Wash day reset</span><span class="pill next">From 20 Dec</span></a><a href="#c-04" class="nav-item"><span class="nav-num">04</span><span class="nav-title">The 3-step Nordic Skin Ritual</span><span class="pill live">Launch now</span></a><a href="#c-05" class="nav-item"><span class="nav-num">05</span><span class="nav-title">What&#x27;s inside</span><span class="pill later">Retargeting, later</span></a><a href="#c-06" class="nav-item"><span class="nav-num">06</span><span class="nav-title">The soap you look forward to</span><span class="pill later">January</span></a><a href="#c-07" class="nav-item"><span class="nav-num">07</span><span class="nav-title">The gift</span><span class="pill live">Launch now, pause 20 Dec</span></a><a href="#c-08" class="nav-item"><span class="nav-num">08</span><span class="nav-title">Review ad template (REAL customer review placeholder)</span><span class="pill hold">Needs a real review</span></a></nav>
+</section>
+
+<section class="concept" id="c-01">
+  <div class="concept-head">
+    <span class="big-num">01</span>
+    <div>
+      <h3>Bog to bottle: brand origin story</h3>
+      <p class="meta"><span class="pill later">January</span> Whole range (six products, three at-home rituals)</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Unaware / problem-aware cold audience. Brand introduction.</dd></div>
+    <div><dt>Links to</dt><dd>Homepage or collection page</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Catalogue p.1 (Estonian bog cover), p.2 (About ELUORA, elu = life), p.3 (Retail Collection), p.9 (peat water from Estonia&#x27;s peat bogs), p.14 (where beauty products come from)</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Learn More</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">36/60</span><button class="copy" type="button" data-target="c1">Copy</button></div>
+  <div class="text" id="c1">This starts in an Estonian peat bog.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">33/40</span><button class="copy" type="button" data-target="c2">Copy</button></div>
+  <div class="text" id="c2">Estonian peat, from bog to bottle</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">240 characters</span><button class="copy" type="button" data-target="c3">Copy</button></div>
+  <div class="text" id="c3">This starts in an Estonian peat bog.
+
+ELUORA takes its name from elu, the Estonian word for life. We bring peat and peat water into scalp, hair and face care through thoughtfully developed formulations.
+
+Six products. Three at-home rituals.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">34/60</span><button class="copy" type="button" data-target="c4">Copy</button></div>
+  <div class="text" id="c4">Elu is the Estonian word for life.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">35/40</span><button class="copy" type="button" data-target="c5">Copy</button></div>
+  <div class="text" id="c5">Scalp and face care, rooted in peat</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">193 characters</span><button class="copy" type="button" data-target="c6">Copy</button></div>
+  <div class="text" id="c6">Elu is the Estonian word for life. It is where our name begins.
+
+Inspired by the landscapes of Estonia, ELUORA brings peat and peat water into a six-product collection for scalp, hair and face.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">42/60</span><button class="copy" type="button" data-target="c7">Copy</button></div>
+  <div class="text" id="c7">Do you know where your shampoo comes from?</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">38/40</span><button class="copy" type="button" data-target="c8">Copy</button></div>
+  <div class="text" id="c8">Made with Estonian peat and peat water</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">193 characters</span><button class="copy" type="button" data-target="c9">Copy</button></div>
+  <div class="text" id="c9">Do you know where your shampoo comes from?
+
+Ours begins in Estonia&#x27;s peat bogs. ELUORA uses Estonian peat and peat water across scalp, hair and face care, made for calm, simple rituals at home.</div>
+</div>
+</div></div>
+  
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> A slow journey from the bog at dawn to the bottles on stone.</p>
+<p><strong>Shots (15 s):</strong></p>
+<ul><li>0-3 s: Wide, misty Estonian bog at sunrise, still water reflecting pines (matches catalogue cover). On-screen hook.</li><li>3-6 s: Close-up of moss and dark peat, a hand touching the surface.</li><li>6-9 s: Slow push-in on the six products arranged on pale travertine stone with soft leaf shadows (catalogue p.3 style).</li><li>9-12 s: Text card: &quot;elu = life&quot; in the ELUORA serif, cream background.</li><li>12-15 s: Logo end card with eluora.co.</li></ul>
+<p><strong>Setting and look:</strong> Real Estonian bog footage (own or licensed stock), cream and warm-beige studio palette, gold logo, soft daylight from a window, no people&#x27;s faces needed.</p>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16 (1080x1920):</strong> keep all text inside the centre band (y 220 to 1420, 180 px side margins).</li><li><strong>1:1 (1080x1080):</strong> use shots 1, 3 and 5 only (about 10 s), or a single still of the bottles on stone with the bog softly behind.</li></ul>
+<p><strong>Avoid:</strong> Legible close-ups of labels that say &quot;Detoxifying&quot;, &quot;Antibacterial&quot;, &quot;Natural&quot; or &quot;100% Natural&quot;. No before/after.</p></div></details>
+</section><section class="concept" id="c-02">
+  <div class="concept-head">
+    <span class="big-num">02</span>
+    <div>
+      <h3>The black mask moment: The Purify texture</h3>
+      <p class="meta"><span class="pill next">From 20 Dec</span> The Purify (Black Earth Renewal), Deep Cleansing Peat Facial Mask, 250 ml, €54</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Solution-aware. Texture and ritual are the scroll-stopper.</dd></div>
+    <div><dt>Links to</dt><dd>The Purify (Black Earth Renewal) page</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Catalogue p.8 (The Purify), p.12 (Nordic Skin Ritual, weekly step)</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">41/60</span><button class="copy" type="button" data-target="c10">Copy</button></div>
+  <div class="text" id="c10">Once or twice a week, the mask comes out.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">30/40</span><button class="copy" type="button" data-target="c11">Copy</button></div>
+  <div class="text" id="c11">The Purify: a weekly peat mask</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">219 characters</span><button class="copy" type="button" data-target="c12">Copy</button></div>
+  <div class="text" id="c12">Once or twice a week, the mask comes out.
+
+The Purify (Black Earth Renewal) is a deep cleansing mask made with carefully filtered Estonian peat. Apply, let it dry, rinse with warm water. Skin is left feeling silky soft.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">25/60</span><button class="copy" type="button" data-target="c13">Copy</button></div>
+  <div class="text" id="c13">Apply. Let it dry. Rinse.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">28/40</span><button class="copy" type="button" data-target="c14">Copy</button></div>
+  <div class="text" id="c14">Your weekly peat mask moment</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">197 characters</span><button class="copy" type="button" data-target="c15">Copy</button></div>
+  <div class="text" id="c15">Apply. Let it dry. Rinse.
+
+The Purify (Black Earth Renewal) is made with carefully filtered Estonian peat to deeply cleanse and refine the appearance of pores. Follow with The Balance. 250 ml, €54.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Learn More</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">42/60</span><button class="copy" type="button" data-target="c16">Copy</button></div>
+  <div class="text" id="c16">The weekly step in the Nordic Skin Ritual.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">31/40</span><button class="copy" type="button" data-target="c17">Copy</button></div>
+  <div class="text" id="c17">Deep cleansing peat facial mask</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">182 characters</span><button class="copy" type="button" data-target="c18">Copy</button></div>
+  <div class="text" id="c18">The weekly step in the Nordic Skin Ritual.
+
+Wash with The Cleanse, apply The Purify to clean, dry skin, rinse, then mist The Balance. Once or twice a week, a slower kind of skincare.</div>
+</div>
+</div></div>
+  
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> The sensory moment of opening the jar and applying the peat mask.</p>
+<p><strong>Shots (10-12 s):</strong></p>
+<ul><li>0-2 s: Top-down, the black jar lid twists off on travertine stone. On-screen hook.</li><li>2-5 s: Macro of a fingertip scooping the mask; show the real texture as it is.</li><li>5-8 s: Brush or fingers spreading an even layer on a cheek or jawline (crop: lower face only, no eyes needed).</li><li>8-10 s: Rinsing with warm water over a stone basin, slow motion.</li><li>10-12 s: Jar beside The Balance, logo end card.</li></ul>
+<p><strong>Setting and look:</strong> Bathroom with stone and linen, warm side light, cream towel, olive branch. Calm, slow cuts.</p>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16:</strong> the texture macro fills the frame; keep text in the centre band.</li><li><strong>1:1:</strong> a still of the open jar with the texture visible, or shots 2 and 3 as a 6 s loop.</li></ul>
+<p><strong>Avoid:</strong> Before/after skin shots, &quot;after&quot; skin close-ups that imply a result, zoomed pores. Turn the jar so the &quot;100% Natural&quot; badge and &quot;Detoxifying&quot; line are not legible.</p>
+<p><strong>Check before filming:</strong> Confirm the mask&#x27;s real colour and texture on camera. The headline concept says &quot;black&quot;; show what the product actually looks like.</p></div></details>
+</section><section class="concept" id="c-03">
+  <div class="concept-head">
+    <span class="big-num">03</span>
+    <div>
+      <h3>Wash day reset: The Reset for oily roots and build-up</h3>
+      <p class="meta"><span class="pill next">From 20 Dec</span> The Reset (Nordic Scalp Reset), Deep Cleansing Peat Shampoo, 250 ml, €42; supported by The Restore and The Daily</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Problem-aware. Speaks to the feeling of heavy roots and build-up (cosmetic only).</dd></div>
+    <div><dt>Links to</dt><dd>The Reset (Nordic Scalp Reset) page</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Catalogue p.4 (The Reset), p.6 (The Restore), p.11 (scalp ritual)</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">31/60</span><button class="copy" type="button" data-target="c19">Copy</button></div>
+  <div class="text" id="c19">Roots feeling heavy by day two?</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">38/40</span><button class="copy" type="button" data-target="c20">Copy</button></div>
+  <div class="text" id="c20">The Reset: a deep clean for your scalp</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">198 characters</span><button class="copy" type="button" data-target="c21">Copy</button></div>
+  <div class="text" id="c21">Roots feeling heavy by day two?
+
+The Reset (Nordic Scalp Reset) is a deep cleansing peat shampoo with argan oil. It deeply cleanses without stripping moisture and helps rebalance oil between washes.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">16/60</span><button class="copy" type="button" data-target="c22">Copy</button></div>
+  <div class="text" id="c22">Wash day, reset.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">27/40</span><button class="copy" type="button" data-target="c23">Copy</button></div>
+  <div class="text" id="c23">Deep cleansing peat shampoo</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">203 characters</span><button class="copy" type="button" data-target="c24">Copy</button></div>
+  <div class="text" id="c24">Wash day, reset.
+
+Massage The Reset (Nordic Scalp Reset) into the scalp for 1 to 2 minutes and rinse. Estonian peat and argan oil cleanse oily roots and build-up, for hair that feels lighter and cleaner.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">35/60</span><button class="copy" type="button" data-target="c25">Copy</button></div>
+  <div class="text" id="c25">For the wash that needs to do more.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">38/40</span><button class="copy" type="button" data-target="c26">Copy</button></div>
+  <div class="text" id="c26">Lighter, cleaner hair from root to tip</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">181 characters</span><button class="copy" type="button" data-target="c27">Copy</button></div>
+  <div class="text" id="c27">For the wash that needs to do more.
+
+Use The Reset (Nordic Scalp Reset) 1 to 3 times a week, then The Restore on mid-lengths to ends. On other wash days, use The Daily. 250 ml, €42.</div>
+</div>
+</div></div>
+  
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> A calm wash-day routine, focused on the scalp massage and the light, clean feeling after.</p>
+<p><strong>Shots (12-15 s):</strong></p>
+<ul><li>0-3 s: Over-the-shoulder, a woman (25-45) parts her hair at the mirror, roots in focus. On-screen hook.</li><li>3-6 s: The Reset bottle on a stone shelf in the shower, hand presses the cap.</li><li>6-9 s: Fingertips massaging lather into the scalp (back of head, wet hair).</li><li>9-12 s: The Restore pumped into the palm, worked through the ends.</li><li>12-15 s: Hair moving freely as she towels off, shot from behind. End card with The Reset and The Restore.</li></ul>
+<p><strong>Setting and look:</strong> Warm-toned bathroom, travertine, linen towel, soft daylight. Faces optional; backs of heads and hands work well.</p>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16:</strong> shots 1, 3 and 5 carry it; captions in the centre band.</li><li><strong>1:1:</strong> still of The Reset next to The Restore on wet stone, with a hand-lettered &quot;Wash day, reset.&quot;</li></ul>
+<p><strong>Avoid:</strong> Close-ups of flaking, itchy or irritated scalp, hair in the drain or on a brush, any &quot;after&quot; comparison. Keep the &quot;Detoxify&quot; line on the bottle label out of focus.</p></div></details>
+</section><section class="concept" id="c-04">
+  <div class="concept-head">
+    <span class="big-num">04</span>
+    <div>
+      <h3>The 3-step Nordic Skin Ritual: Cleanse, Purify, Balance</h3>
+      <p class="meta"><span class="pill live">Launch now</span> The Nordic Skin Ritual, €108: The Cleanse (Bog Bar), The Purify (Black Earth Renewal), The Balance (Refining Mineral Toner)</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Solution-aware. A bundle offer with a clear routine.</dd></div>
+    <div><dt>Links to</dt><dd>Nordic Skin Ritual page</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Catalogue p.7-9 (three face products), p.12 (Nordic Skin Ritual)</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">25/60</span><button class="copy" type="button" data-target="c28">Copy</button></div>
+  <div class="text" id="c28">Cleanse. Purify. Balance.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">33/40</span><button class="copy" type="button" data-target="c29">Copy</button></div>
+  <div class="text" id="c29">The Nordic Skin Ritual in 3 steps</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">205 characters</span><button class="copy" type="button" data-target="c30">Copy</button></div>
+  <div class="text" id="c30">Cleanse. Purify. Balance.
+
+Daily: The Cleanse (Bog Bar), then The Balance (Refining Mineral Toner). Once or twice a week, add The Purify (Black Earth Renewal) in between. Rooted in Nordic minimalism. €108.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">36/60</span><button class="copy" type="button" data-target="c31">Copy</button></div>
+  <div class="text" id="c31">A skincare routine you can remember.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">33/40</span><button class="copy" type="button" data-target="c32">Copy</button></div>
+  <div class="text" id="c32">Peat skincare, three simple steps</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">183 characters</span><button class="copy" type="button" data-target="c33">Copy</button></div>
+  <div class="text" id="c33">A skincare routine you can remember.
+
+The Nordic Skin Ritual begins with a gentle peat cleanse and ends with a refreshing peat water toner, with a purifying mask once or twice a week.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Learn More</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">28/60</span><button class="copy" type="button" data-target="c34">Copy</button></div>
+  <div class="text" id="c34">Rooted in Nordic minimalism.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">24/40</span><button class="copy" type="button" data-target="c35">Copy</button></div>
+  <div class="text" id="c35">Cleanse, Purify, Balance</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">233 characters</span><button class="copy" type="button" data-target="c36">Copy</button></div>
+  <div class="text" id="c36">Rooted in Nordic minimalism.
+
+The Cleanse washes without stripping the skin&#x27;s moisture barrier. The Purify refines the appearance of pores. The Balance, alcohol-free, refreshes and hydrates. Together they make the Nordic Skin Ritual.</div>
+</div>
+</div></div>
+  <div class="extra"><span class="label">Optional last line, add to any version</span><div class="field">
+  <div class="field-head"><span class="label">Line</span><span class="count">33 characters</span><button class="copy" type="button" data-target="c37">Copy</button></div>
+  <div class="text" id="c37">Free shipping on orders over €80.</div>
+</div></div>
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> Three steps, three products, one calm rhythm. Number each step on screen.</p>
+<p><strong>Shots (15 s):</strong></p>
+<ul><li>0-3 s: Flat lay of the three products on stone with moss and olive leaves (catalogue p.12). On-screen &quot;Cleanse. Purify. Balance.&quot;</li><li>3-6 s: &quot;1 Cleanse&quot;: hands lathering The Cleanse bar under running water.</li><li>6-9 s: &quot;2 Purify (1-2x a week)&quot;: fingertip applying the mask.</li><li>9-12 s: &quot;3 Balance&quot;: The Balance misted toward the face, fine spray backlit.</li><li>12-15 s: The three products together, &quot;The Nordic Skin Ritual, €108&quot;, logo.</li></ul>
+<p><strong>Setting and look:</strong> Same set as 02 and 06 for a consistent series: travertine, linen, moss, warm low sun.</p>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16:</strong> step numbers top-centre inside the safe band.</li><li><strong>1:1:</strong> 3-frame carousel (one product per card) or the single flat lay still with the three step names.</li></ul>
+<p><strong>Avoid:</strong> Skin comparisons or &quot;glow&quot; result shots. Keep the soap box&#x27;s &quot;Antibacterial&quot; and &quot;Handmade &amp; Natural&quot; text and the mask&#x27;s &quot;100% Natural&quot; badge out of focus or turned away.</p></div></details>
+</section><section class="concept" id="c-05">
+  <div class="concept-head">
+    <span class="big-num">05</span>
+    <div>
+      <h3>What&#x27;s inside: peat, peat water, argan, olive oil, aloe vera</h3>
+      <p class="meta"><span class="pill later">Retargeting, later</span> Range-wide; variations lead with the range, The Restore (Silk Repair, €34) and The Daily (Daily Restore, €32)</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Solution-aware, ingredient-curious buyers.</dd></div>
+    <div><dt>Links to</dt><dd>Page of the product named in each version</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Catalogue p.4 (peat, argan; label: argan &amp; olive oil), p.5 (peat water, aloe vera), p.6 (argan, olive oil, peat water), p.7-9 (peat, peat water)</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Learn More</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">42/60</span><button class="copy" type="button" data-target="c38">Copy</button></div>
+  <div class="text" id="c38">Peat. Peat water. Argan. Olive. Aloe vera.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">20/40</span><button class="copy" type="button" data-target="c39">Copy</button></div>
+  <div class="text" id="c39">What&#x27;s inside ELUORA</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">216 characters</span><button class="copy" type="button" data-target="c40">Copy</button></div>
+  <div class="text" id="c40">Peat. Peat water. Argan. Olive. Aloe vera.
+
+Estonian peat in The Reset, The Cleanse and The Purify. Peat water in The Daily, The Restore and The Balance. Argan and olive oil to soften hair. Aloe vera to help hydrate.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">42/60</span><button class="copy" type="button" data-target="c41">Copy</button></div>
+  <div class="text" id="c41">Argan oil, olive oil, Estonian peat water.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">31/40</span><button class="copy" type="button" data-target="c42">Copy</button></div>
+  <div class="text" id="c42">Argan, olive oil and peat water</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">200 characters</span><button class="copy" type="button" data-target="c43">Copy</button></div>
+  <div class="text" id="c43">Argan oil, olive oil, Estonian peat water.
+
+The Restore (Silk Repair) uses all three to smooth frizz and leave hair soft, glossy and manageable. Use after every wash, mid-lengths to ends. 250 ml, €34.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">36/60</span><button class="copy" type="button" data-target="c44">Copy</button></div>
+  <div class="text" id="c44">Aloe vera meets Estonian peat water.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">35/40</span><button class="copy" type="button" data-target="c45">Copy</button></div>
+  <div class="text" id="c45">Peat water and aloe vera, every day</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">230 characters</span><button class="copy" type="button" data-target="c46">Copy</button></div>
+  <div class="text" id="c46">Aloe vera meets Estonian peat water.
+
+The Daily (Daily Restore) is a gentle everyday shampoo for all hair types, including colour-treated hair. Aloe vera helps hydrate the scalp. Softer, shinier-looking hair with regular use. €32.</div>
+</div>
+</div></div>
+  
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> Each ingredient shown as a real object, then the bottle it goes into.</p>
+<p><strong>Shots (15 s), one ingredient per 2-3 s with a single-word label:</strong></p>
+<ul><li>&quot;Peat&quot;: a hand holding dark peat, moss around it.</li><li>&quot;Peat water&quot;: amber water poured slowly into a stone bowl.</li><li>&quot;Argan&quot;: argan oil dripping from a glass dropper.</li><li>&quot;Olive&quot;: an olive branch laid on linen, oil in a small dish.</li><li>&quot;Aloe vera&quot;: a fresh aloe leaf cut open, clear gel.</li><li>End: the six products in a row, &quot;What&#x27;s inside ELUORA&quot;, logo.</li></ul>
+<p><strong>Setting and look:</strong> Top-down on cream travertine, shadows of leaves, warm light. For variations 2 and 3, end on The Restore or The Daily only.</p>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16:</strong> one ingredient per screen; words centred in the safe band.</li><li><strong>1:1:</strong> 6-card carousel (5 ingredients + product card) or a grid still of all five ingredients around one bottle.</li></ul>
+<p><strong>Avoid:</strong> Implying these are the only ingredients (&quot;made with just 5 ingredients&quot;). Avoid words like &quot;pure&quot; or &quot;natural&quot; in on-screen text.</p></div></details>
+</section><section class="concept" id="c-06">
+  <div class="concept-head">
+    <span class="big-num">06</span>
+    <div>
+      <h3>The soap you look forward to: The Cleanse</h3>
+      <p class="meta"><span class="pill later">January</span> The Cleanse (Bog Bar), Peat Soap with Lemongrass, Rosemary &amp; Peppermint, €28</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Problem-aware to solution-aware. Lowest price point, easy first purchase.</dd></div>
+    <div><dt>Links to</dt><dd>The Cleanse (Bog Bar) page</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Catalogue p.7 (The Cleanse, &#x27;a cleansing ritual worth looking forward to&#x27;)</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">29/60</span><button class="copy" type="button" data-target="c47">Copy</button></div>
+  <div class="text" id="c47">The soap you look forward to.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">36/40</span><button class="copy" type="button" data-target="c48">Copy</button></div>
+  <div class="text" id="c48">The Cleanse: peat soap for your face</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">209 characters</span><button class="copy" type="button" data-target="c49">Copy</button></div>
+  <div class="text" id="c49">The soap you look forward to.
+
+The Cleanse (Bog Bar) is a cold-processed peat soap with lemongrass, rosemary and peppermint. Lather in your palms, wash, rinse with cool water. Clean, soft, refreshed skin. €28.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">36/60</span><button class="copy" type="button" data-target="c50">Copy</button></div>
+  <div class="text" id="c50">Lemongrass, rosemary and peppermint.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">33/40</span><button class="copy" type="button" data-target="c51">Copy</button></div>
+  <div class="text" id="c51">Peat soap with an uplifting aroma</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">223 characters</span><button class="copy" type="button" data-target="c52">Copy</button></div>
+  <div class="text" id="c52">Lemongrass, rosemary and peppermint, morning or evening.
+
+The Cleanse (Bog Bar) gently cleanses without stripping the skin&#x27;s moisture barrier. Suitable for all skin types, including sensitive skin, and for the whole family.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Learn More</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">38/60</span><button class="copy" type="button" data-target="c53">Copy</button></div>
+  <div class="text" id="c53">One bar starts the Nordic Skin Ritual.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">22/40</span><button class="copy" type="button" data-target="c54">Copy</button></div>
+  <div class="text" id="c54">Start with The Cleanse</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">192 characters</span><button class="copy" type="button" data-target="c55">Copy</button></div>
+  <div class="text" id="c55">One bar starts the Nordic Skin Ritual.
+
+The Cleanse (Bog Bar) uses mineral-rich Estonian peat for daily facial cleansing. Follow with The Balance for skin that feels clean, soft and refreshed.</div>
+</div>
+</div></div>
+  
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> The small daily pleasure of a good bar: lather, scent, cool water.</p>
+<p><strong>Shots (10 s):</strong></p>
+<ul><li>0-2 s: The black box slides open; the dark bar is lifted out. On-screen hook.</li><li>2-5 s: Macro of the bar turning under running water, rich lather forming between palms.</li><li>5-7 s: Sprigs of rosemary, peppermint leaves and lemongrass beside the bar on wet stone.</li><li>7-10 s: Cool water splashed on the face (eyes closed, calm), towel pat. End card.</li></ul>
+<p><strong>Setting and look:</strong> Morning light, stone washbasin, linen, fresh herbs. ASMR-style sound of water and lather works well without music.</p>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16:</strong> the lather macro is the hero shot; captions in the safe band.</li><li><strong>1:1:</strong> still of the bar on wet travertine with herbs, the box slightly behind.</li></ul>
+<p><strong>Avoid:</strong> The box text &quot;Antibacterial Lemongrass&quot; and the &quot;Handmade &amp; Natural&quot; badge must not be legible. Show the bar or the plain side of the box. No skin-result close-ups.</p></div></details>
+</section><section class="concept" id="c-07">
+  <div class="concept-head">
+    <span class="big-num">07</span>
+    <div>
+      <h3>The gift: The Full Ritual with the Eluora bag</h3>
+      <p class="meta"><span class="pill live">Launch now, pause 20 Dec</span> THE ELUORA RITUAL (The Full Ritual), €198: all six products in the black ELUORA case</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Gift buyers (seasonal) and existing fans. Highest order value.</dd></div>
+    <div><dt>Links to</dt><dd>THE ELUORA RITUAL page</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Catalogue p.13 (The Full Ritual and black case), p.3 (collection), p.14 (where beauty products come from); owner confirmed the case is included</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">30/60</span><button class="copy" type="button" data-target="c56">Copy</button></div>
+  <div class="text" id="c56">A gift with an Estonian story.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">35/40</span><button class="copy" type="button" data-target="c57">Copy</button></div>
+  <div class="text" id="c57">The Full Ritual, in the ELUORA case</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">190 characters</span><button class="copy" type="button" data-target="c58">Copy</button></div>
+  <div class="text" id="c58">A gift with an Estonian story.
+
+THE ELUORA RITUAL brings all six products together in the black ELUORA case: three for scalp and hair, three for the face, each rooted in Estonian peat. €198.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">52/60</span><button class="copy" type="button" data-target="c59">Copy</button></div>
+  <div class="text" id="c59">For someone who cares where their beauty comes from.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">31/40</span><button class="copy" type="button" data-target="c60">Copy</button></div>
+  <div class="text" id="c60">Six products, one Nordic ritual</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">222 characters</span><button class="copy" type="button" data-target="c61">Copy</button></div>
+  <div class="text" id="c61">For someone who cares where their beauty products come from.
+
+The Full Ritual (THE ELUORA RITUAL) pairs a scalp and hair ritual with a facial ritual, packed in the black ELUORA case. A considered gift, or one for yourself.</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">15/60</span><button class="copy" type="button" data-target="c62">Copy</button></div>
+  <div class="text" id="c62">Unzip the case.</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">32/40</span><button class="copy" type="button" data-target="c63">Copy</button></div>
+  <div class="text" id="c63">The complete ELUORA ritual, €198</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">161 characters</span><button class="copy" type="button" data-target="c64">Copy</button></div>
+  <div class="text" id="c64">Unzip the case.
+
+Inside are The Reset, The Daily, The Restore, The Cleanse, The Purify and The Balance. The full ELUORA experience, scalp to face, ready to give.</div>
+</div>
+</div></div>
+  <div class="extra"><span class="label">Optional last line, add to any version</span><div class="field">
+  <div class="field-head"><span class="label">Line</span><span class="count">51 characters</span><button class="copy" type="button" data-target="c65">Copy</button></div>
+  <div class="text" id="c65">Order by 19 December for delivery before Christmas.</div>
+</div><div class="field">
+  <div class="field-head"><span class="label">Line</span><span class="count">33 characters</span><button class="copy" type="button" data-target="c66">Copy</button></div>
+  <div class="text" id="c66">Free shipping on orders over €80.</div>
+</div></div>
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> The unboxing of the black ELUORA case, slow and tactile, like opening a considered gift.</p>
+<p><strong>Shots (12-15 s):</strong></p>
+<ul><li>0-3 s: Hands carry the black ELUORA case to a stone ledge; leaf shadows on the wall (catalogue p.13). On-screen hook.</li><li>3-6 s: Close-up of the gold zip pulls opening.</li><li>6-10 s: The six products lifted out one by one and lined up, each name as a small caption.</li><li>10-13 s: Hero frame: case open with all six products around it.</li><li>13-15 s: Optional: a linen ribbon or gift card tag on the case. &quot;THE ELUORA RITUAL, €198&quot;, logo.</li></ul>
+<p><strong>Setting and look:</strong> Warm afternoon light, travertine, olive branch, soft beige wall. Calm music, no countdowns or festive clutter. A sprig of pine is enough for the season.</p>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16:</strong> unboxing sequence; product names in the safe band.</li><li><strong>1:1:</strong> the hero frame as a still (case + six products), as on catalogue p.13.</li></ul>
+<p><strong>Avoid:</strong> Discount or &quot;save&quot; overlays, countdown timers, &quot;last chance&quot; lines. Keep the soap and mask badges illegible.</p></div></details>
+</section><section class="concept" id="c-08">
+  <div class="concept-head">
+    <span class="big-num">08</span>
+    <div>
+      <h3>Review ad template (REAL customer review placeholder)</h3>
+      <p class="meta"><span class="pill hold">Needs a real review</span> Any product or ritual the real review is about</p>
+    </div>
+  </div>
+  <dl class="facts">
+    <div><dt>Who it's for</dt><dd>Warm / retargeting (engaged with earlier ads or visited eluora.co).</dd></div>
+    <div><dt>Links to</dt><dd>Page of the product the real review is about</dd></div>
+    <div><dt>Where the facts come from</dt><dd>Must be grounded in a real customer review the owner supplies, used with that customer&#x27;s written permission</dd></div>
+  </dl>
+  <div class="variations"><div class="variation">
+  <h4>Version 1 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">45/60</span><button class="copy" type="button" data-target="c67">Copy</button></div>
+  <div class="text" id="c67">[REAL CUSTOMER REVIEW: first words, verbatim]</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">29/40</span><button class="copy" type="button" data-target="c68">Copy</button></div>
+  <div class="text" id="c68">In an ELUORA customer&#x27;s words</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">229 characters</span><button class="copy" type="button" data-target="c69">Copy</button></div>
+  <div class="text" id="c69">&quot;[REAL CUSTOMER REVIEW: paste verbatim, unedited, about 60-100 characters]&quot;
+[REVIEWER: first name only, with written permission. Otherwise delete this line]
+
+[PRODUCT: catalogue name (shop name)], made with Estonian peat. [PRICE]</div>
+</div>
+</div><div class="variation">
+  <h4>Version 2 <span class="cta">Button: Shop Now</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">45/60</span><button class="copy" type="button" data-target="c70">Copy</button></div>
+  <div class="text" id="c70">[REAL CUSTOMER REVIEW: first words, verbatim]</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">35/40</span><button class="copy" type="button" data-target="c71">Copy</button></div>
+  <div class="text" id="c71">[PRODUCT: catalogue name], reviewed</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">186 characters</span><button class="copy" type="button" data-target="c72">Copy</button></div>
+  <div class="text" id="c72">&quot;[REAL CUSTOMER REVIEW: paste verbatim, unedited]&quot;
+
+That review is about [PRODUCT: catalogue name (shop name)]. [ONE CATALOGUE FACT, e.g. &#x27;A deep cleansing peat shampoo with argan oil.&#x27;]</div>
+</div>
+</div><div class="variation">
+  <h4>Version 3 <span class="cta">Button: Learn More</span></h4>
+  <div class="field">
+  <div class="field-head"><span class="label">Hook (first line and on-screen text)</span><span class="count">37/60</span><button class="copy" type="button" data-target="c73">Copy</button></div>
+  <div class="text" id="c73">What a customer said about [PRODUCT].</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Headline</span><span class="count">22/40</span><button class="copy" type="button" data-target="c74">Copy</button></div>
+  <div class="text" id="c74">Shared with permission</div>
+</div>
+  <div class="field">
+  <div class="field-head"><span class="label">Primary text</span><span class="count">189 characters</span><button class="copy" type="button" data-target="c75">Copy</button></div>
+  <div class="text" id="c75">What a customer said about [PRODUCT: catalogue name (shop name)]:
+
+&quot;[REAL CUSTOMER REVIEW: paste verbatim, unedited]&quot;
+
+[HOW TO USE line from the catalogue, e.g. &#x27;Use once or twice a week.&#x27;]</div>
+</div>
+</div></div>
+  
+  <details class="brief"><summary>Visual brief for photo and video (1:1 and 9:16)</summary><div class="brief-body"><p><strong>Idea:</strong> The customer&#x27;s own words on screen, with the product, and nothing invented around them.</p>
+<p><strong>Shots (8-10 s):</strong></p>
+<ul><li>0-4 s: Cream background, the review text appearing line by line in the ELUORA serif (quote marks in gold).</li><li>4-7 s: The reviewed product on travertine, gentle push-in.</li><li>7-10 s: Product name, price, logo.</li></ul>
+<p><strong>Formats:</strong></p>
+<ul><li><strong>9:16:</strong> quote centred in the safe band, maximum 3 short lines on screen.</li><li><strong>1:1:</strong> a single static quote card with the product photo in the lower third.</li></ul>
+<p><strong>Rules for using this template:</strong></p>
+<ul><li>Paste the review <strong>verbatim</strong>. Do not edit, shorten in a way that changes meaning, or combine reviews.</li><li>Use only a real review you can trace to a real customer. Keep a record of the source and their written permission.</li><li>No star ratings, no &quot;5/5&quot;, no &quot;verified&quot; badges unless they come from a real review platform you can show.</li><li>If the review mentions a skin or scalp condition (for example acne or dandruff) or a dramatic result, do not use it.</li><li>If the review contains a banned word (natural, organic, detox, and so on), choose a different review.</li><li>First name only, and only with permission. No photos of the reviewer unless they agreed in writing to appear in ads.</li></ul></div></details>
+</section>
+
+<section>
+  <h2>Rules every ad follows</h2>
+  <div class="rules">
+    <div class="setting"><span class="label">Never</span><ul><li>Before/after images or promised results</li><li>Reviews, ratings or names we made up</li><li>Acne, eczema, psoriasis, dandruff, hair loss or growth</li><li>Discounts, countdowns or exclamation marks</li></ul></div>
+    <div class="setting"><span class="label">Banned words</span><ul><li>natural, organic</li><li>eco-friendly, sustainable</li><li>detox, detoxifying</li><li>antibacterial, clinically proven</li></ul></div>
+    <div class="setting"><span class="label">Watch the packaging</span><ul><li>The Purify jar: "Detoxifying", "100% Natural"</li><li>The Cleanse box: "Antibacterial Lemongrass", "Handmade &amp; Natural"</li><li>Frame these so the words can't be read</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Before you press publish</h2>
+  <ul class="checklist">
+    <li><span class="tick">✓</span><span>Meta tracking tested with a real order</span></li>
+    <li><span class="tick">✓</span><span>Shipping to Estonia, Finland and 21 other EU countries</span></li>
+    <li><span class="tick">✓</span><span>Each ad links to the page of the product it shows</span></li>
+    <li><span class="open">○</span><span>Photos or short videos for ads 04 and 07, in square (1:1) and tall (9:16)</span></li>
+    <li><span class="open">○</span><span>"Free shipping over €80" and "Order by 19 December" visible on the product pages</span></li>
+    <li><span class="open">○</span><span>Instagram @eluora.official connected to the ad account</span></li>
+    <li><span class="open">○</span><span>Your rough profit margin, so the €40 target can be replaced</span></li>
+  </ul>
+</section>
+
+<footer>Built from the ELUORA Retail Product Catalogue and the owner's price list, 18 November 2026. Source files are in the ads folder of the marketingskills repository.</footer>
+</div>
+
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.copy');
+  if (!b) return;
+  var el = document.getElementById(b.dataset.target);
+  var txt = el.textContent;
+  function done() { b.textContent = 'Copied'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('done'); }, 1500); }
+  function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected'; }
+  try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (err) { fallback(); }
+});
+</script>
