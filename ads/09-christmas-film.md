@@ -58,7 +58,7 @@ Each shot is made in two steps: a still keyframe (to lock the look), then a 5-se
 | Field | Text | Characters |
 |---|---|---|
 | Hook / first line | The art of coming home. | 23 |
-| Primary text | The art of coming home.<br><br>THE ELUORA RITUAL brings all six products together in the black ELUORA case, each rooted in Estonian peat. A little luxury. A moment for yourself.<br><br>Order by 19 December for Christmas delivery. Free shipping over €80. | 230 |
+| Primary text | The art of coming home.<br><br>THE ELUORA RITUAL brings all six products together in the black ELUORA case, each rooted in Estonian peat. A little luxury. A moment for yourself.<br><br>Order by 19 December for Christmas delivery. Free shipping over €80. | 241 |
 | Headline | The ELUORA Ritual, €198 | 23 |
 | Button | Shop Now | |
 
