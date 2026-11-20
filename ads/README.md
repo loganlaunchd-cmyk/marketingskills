@@ -72,3 +72,4 @@ Each file has 3 variations (hook, headline, primary text, CTA button) and a visu
 - [x] Landing page: each ad links to the page of the product it advertises (owner, 2026-11-18)
 - [ ] One or more real customer reviews, with permission, for concept 08
 - [ ] Owner review of footage for label visibility
+- [ ] Christmas film (ad 09): plan in [09-christmas-film.md](09-christmas-film.md), awaiting approval and credits
